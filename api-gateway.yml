@@ -26,3 +26,19 @@ spring:
 #   client:
 #     serviceUrl:
 #       defaultZone: http://discovery-server:8761/eureka/
+
+  cloud:
+    gateway:
+      routes:
+        - id: vets-service
+          uri: http://vets-service
+          predicates:
+            - Path=/api/vet/**
+        - id: visits-service
+          uri: http://visits-service
+          predicates:
+            - Path=/api/visit/**
+        - id: customers-service
+          uri: http://customers-service
+          predicates:
+            - Path=/api/customer/**
